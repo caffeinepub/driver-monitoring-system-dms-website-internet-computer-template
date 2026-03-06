@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Bricolage Grotesque ── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-VariableFont.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Sora ── */
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora-VariableFont.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Geist Mono ── */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-VariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Base palette — clean off-white + dark slate */
+    --background: 0.98 0.004 240;
+    --foreground: 0.15 0.02 240;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 240;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 240;
+
+    /* Primary: Indigo/Blue */
+    --primary: 0.52 0.22 264;
+    --primary-foreground: 0.99 0 0;
+
+    --secondary: 0.94 0.01 240;
+    --secondary-foreground: 0.15 0.02 240;
+
+    --muted: 0.95 0.01 240;
+    --muted-foreground: 0.52 0.02 240;
+
+    --accent: 0.92 0.02 240;
+    --accent-foreground: 0.15 0.02 240;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.9 0.01 240;
+    --input: 0.88 0.01 240;
+    --ring: 0.52 0.22 264;
+
+    /* Category colors */
+    --cat-notes: 0.52 0.22 264; /* indigo */
+    --cat-notes-bg: 0.94 0.06 264;
+    --cat-websites: 0.52 0.18 162; /* emerald */
+    --cat-websites-bg: 0.93 0.06 162;
+    --cat-practice: 0.58 0.2 55; /* amber */
+    --cat-practice-bg: 0.95 0.06 55;
+    --cat-courses: 0.52 0.22 305; /* violet */
+    --cat-courses-bg: 0.94 0.06 305;
+
+    /* Shadows */
+    --shadow-card: 0 2px 8px oklch(0.15 0.02 240 / 0.08), 0 1px 2px
+      oklch(0.15 0.02 240 / 0.06);
+    --shadow-card-hover: 0 8px 24px oklch(0.15 0.02 240 / 0.12), 0 2px 6px
+      oklch(0.15 0.02 240 / 0.08);
+
+    /* Charts */
+    --chart-1: 0.52 0.22 264;
+    --chart-2: 0.52 0.18 162;
+    --chart-3: 0.58 0.2 55;
+    --chart-4: 0.52 0.22 305;
+    --chart-5: 0.55 0.22 25;
+  }
+
+  .dark {
+    --background: 0.11 0.015 240;
+    --foreground: 0.94 0.01 240;
+
+    --card: 0.16 0.015 240;
+    --card-foreground: 0.94 0.01 240;
+
+    --popover: 0.14 0.015 240;
+    --popover-foreground: 0.94 0.01 240;
+
+    /* Primary: Brighter indigo */
+    --primary: 0.67 0.22 264;
+    --primary-foreground: 0.11 0.015 240;
+
+    --secondary: 0.22 0.02 240;
+    --secondary-foreground: 0.94 0.01 240;
+
+    --muted: 0.22 0.02 240;
+    --muted-foreground: 0.62 0.02 240;
+
+    --accent: 0.26 0.025 240;
+    --accent-foreground: 0.94 0.01 240;
+
+    --destructive: 0.6 0.24 25;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.24 0.02 240;
+    --input: 0.24 0.02 240;
+    --ring: 0.67 0.22 264;
+
+    /* Category colors — brighter for dark mode */
+    --cat-notes: 0.7 0.2 264;
+    --cat-notes-bg: 0.2 0.06 264;
+    --cat-websites: 0.68 0.18 162;
+    --cat-websites-bg: 0.18 0.05 162;
+    --cat-practice: 0.75 0.18 55;
+    --cat-practice-bg: 0.2 0.05 55;
+    --cat-courses: 0.7 0.2 305;
+    --cat-courses-bg: 0.2 0.06 305;
+
+    --shadow-card: 0 2px 8px oklch(0.05 0 0 / 0.3), 0 1px 2px
+      oklch(0.05 0 0 / 0.2);
+    --shadow-card-hover: 0 8px 24px oklch(0.05 0 0 / 0.4), 0 2px 6px
+      oklch(0.05 0 0 / 0.3);
+
+    --chart-1: 0.7 0.2 264;
+    --chart-2: 0.68 0.18 162;
+    --chart-3: 0.75 0.18 55;
+    --chart-4: 0.7 0.2 305;
+    --chart-5: 0.65 0.24 25;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: "Geist Mono", "Fira Code", monospace;
+  }
+
+  /* Category badge colors */
+  .cat-notes {
+    background-color: oklch(var(--cat-notes-bg));
+    color: oklch(var(--cat-notes));
+    border: 1px solid oklch(var(--cat-notes) / 0.2);
+  }
+
+  .cat-websites {
+    background-color: oklch(var(--cat-websites-bg));
+    color: oklch(var(--cat-websites));
+    border: 1px solid oklch(var(--cat-websites) / 0.2);
+  }
+
+  .cat-practice {
+    background-color: oklch(var(--cat-practice-bg));
+    color: oklch(var(--cat-practice));
+    border: 1px solid oklch(var(--cat-practice) / 0.2);
+  }
+
+  .cat-courses {
+    background-color: oklch(var(--cat-courses-bg));
+    color: oklch(var(--cat-courses));
+    border: 1px solid oklch(var(--cat-courses) / 0.2);
+  }
+
+  /* Card left border accent */
+  .card-notes {
+    border-left: 3px solid oklch(var(--cat-notes));
+  }
+
+  .card-websites {
+    border-left: 3px solid oklch(var(--cat-websites));
+  }
+
+  .card-practice {
+    border-left: 3px solid oklch(var(--cat-practice));
+  }
+
+  .card-courses {
+    border-left: 3px solid oklch(var(--cat-courses));
+  }
+
+  /* Resource card hover */
+  .resource-card {
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Hero mesh background */
+  .hero-mesh {
+    background-image: radial-gradient(
+        ellipse 80% 60% at 20% 20%,
+        oklch(0.67 0.22 264 / 0.12) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 80% at 80% 80%,
+        oklch(0.7 0.2 305 / 0.1) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 40% 60% at 60% 20%,
+        oklch(0.68 0.18 162 / 0.08) 0%,
+        transparent 50%
+      );
+  }
+
+  .dark .hero-mesh {
+    background-image: radial-gradient(
+        ellipse 80% 60% at 20% 20%,
+        oklch(0.67 0.22 264 / 0.18) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 80% at 80% 80%,
+        oklch(0.7 0.2 305 / 0.15) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 40% 60% at 60% 20%,
+        oklch(0.68 0.18 162 / 0.12) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Subtle grid pattern */
+  .grid-pattern {
+    background-image: linear-gradient(
+        oklch(var(--foreground) / 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        oklch(var(--foreground) / 0.03) 1px,
+        transparent 1px
+      );
+    background-size: 32px 32px;
+  }
+}
